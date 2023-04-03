@@ -1,0 +1,72 @@
+jenkins:
+  securityRealm:
+    allowSignup: false
+  systemMessage: "Welcome to the Chocolatine-Powered Marvin Jenkins Instance."
+  authorizationStrategy:
+    loggedInUsersCanDoAnything: false
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:admin"
+        - "Job/Build:chocolateen"
+        - "Job/Configure:chocolateen"
+        - "Job/Build:ape"
+        - "Job/Workspace:ape"
+        - "Job/Configure:gorilla"
+        - "Job/Create:gorilla"
+        - "Job/Delete:gorilla"
+        - "Job/Move:gorilla"
+        - "Job/Cancel:gorilla"
+        - "Job/Read:assist"
+        - "Job/Workspace:assist"
+      roles:
+        - name: "admin"
+          description: "Marvin master"
+          permissions:
+            - ".*"
+          assignments:
+            - user: "chocolateen"
+              permission: "admin"
+        - name: "ape"
+          description: "Pedagogical team member"
+          permissions:
+            - "Job/Build"
+            - "Job/Workspace"
+          assignments:
+            - user: "i_dont_know"
+              permission: "ape"
+        - name: "gorilla"
+          description: "Group Obsessively Researching Innovation Linked to Learning and Accomplishment"
+          permissions:
+            - "Job/Build"
+            - "Job/Workspace"
+            - "Job/Configure"
+            - "Job/Create"
+            - "Job/Delete"
+            - "Job/Move"
+            - "Job/Cancel"
+          assignments:
+            - user: "vaugie_g"
+              permission: "gorilla"
+        - name: "assist"
+          description: "Assistant"
+          permissions:
+            - "Job/Read"
+            - "Job/Workspace"
+          assignments:
+            - user: "nasso"
+              permission: "assist"
+    local:
+          enableCaptcha: false
+          users:
+          - id: "chocolateen"
+            password: "${USER_CHOCOLATEEN_PASSWORD}"
+            name: "Hugo"
+          - id: "vaugie_g"
+            password: "${USER_VAUGIE_G_PASSWORD}"
+            name: "Garance"
+          - id: "i_dont_know"
+            password: "${USER_I_DONT_KNOW_PASSWORD}"
+            name: "Jeremy"
+          - id: "nasso"
+            password: "${USER_NASSO_PASSWORD}"
+            name: "Nassim"
